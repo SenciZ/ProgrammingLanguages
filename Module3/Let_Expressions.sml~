@@ -1,0 +1,4 @@
+(* Let Expressions *)
+val x = 5;
+val y = let val x = 3 in x + 5 end;
+

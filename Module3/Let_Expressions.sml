@@ -1,0 +1,28 @@
+(* Let Expressions *)
+val x = 5;
+val y = let val x = 3 in x + 5 end;
+
+(* Nested Functions *)
+
+fun count(from : int, to : int) =
+    if to = from
+    then to :: []
+    else from :: count(from + 1, to);
+
+fun count_up_from_1(to : int) =
+    count(1, to);
+
+(* How to nest count so its not available outisde of count up *)
+
+fun count_up_from_1_nested(to : int) =
+    let
+	fun count(from : int) =
+	if to = from		
+        then to :: []
+        else from :: count(from + 1);
+    in
+	count 1
+    end
+
+	val tst1 = count_up_from_1(5) = [1,2,3,4,5]
+
